@@ -1,0 +1,70 @@
+syntax = "proto3";
+package nescampos.des.des;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/nescampos/des/x/des/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateVote(MsgCreateVote) returns (MsgCreateVoteResponse);
+  rpc UpdateVote(MsgUpdateVote) returns (MsgUpdateVoteResponse);
+  rpc DeleteVote(MsgDeleteVote) returns (MsgDeleteVoteResponse);
+  rpc CreateElection(MsgCreateElection) returns (MsgCreateElectionResponse);
+  rpc UpdateElection(MsgUpdateElection) returns (MsgUpdateElectionResponse);
+  rpc DeleteElection(MsgDeleteElection) returns (MsgDeleteElectionResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgCreateVote {
+  string creator = 1;
+  string electionID = 2;
+  string candidate = 3;
+}
+
+message MsgCreateVoteResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateVote {
+  string creator = 1;
+  uint64 id = 2;
+  string electionID = 3;
+  string candidate = 4;
+}
+
+message MsgUpdateVoteResponse { }
+
+message MsgDeleteVote {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteVoteResponse { }
+
+message MsgCreateElection {
+  string creator = 1;
+  string title = 2;
+  repeated string candidates = 3;
+}
+
+message MsgCreateElectionResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateElection {
+  string creator = 1;
+  uint64 id = 2;
+  string title = 3;
+  repeated string candidates = 4;
+}
+
+message MsgUpdateElectionResponse { }
+
+message MsgDeleteElection {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteElectionResponse { }

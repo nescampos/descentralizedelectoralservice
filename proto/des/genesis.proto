@@ -1,0 +1,16 @@
+syntax = "proto3";
+package nescampos.des.des;
+
+// this line is used by starport scaffolding # genesis/proto/import
+import "des/vote.proto";
+import "des/election.proto";
+
+option go_package = "github.com/nescampos/des/x/des/types";
+
+// GenesisState defines the capability module's genesis state.
+message GenesisState {
+    // this line is used by starport scaffolding # genesis/proto/state
+		repeated Vote voteList = 2; // this line is used by starport scaffolding # genesis/proto/stateField
+		repeated Election electionList = 1; // this line is used by starport scaffolding # genesis/proto/stateField
+}
+

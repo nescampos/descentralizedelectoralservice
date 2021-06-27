@@ -1,0 +1,63 @@
+syntax = "proto3";
+package nescampos.des.des;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+// this line is used by starport scaffolding # 1
+import "des/vote.proto";
+import "des/election.proto";
+
+option go_package = "github.com/nescampos/des/x/des/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    // this line is used by starport scaffolding # 2
+	rpc Vote(QueryGetVoteRequest) returns (QueryGetVoteResponse) {
+		option (google.api.http).get = "/nescampos/des/des/vote/{id}";
+	}
+	rpc VoteAll(QueryAllVoteRequest) returns (QueryAllVoteResponse) {
+		option (google.api.http).get = "/nescampos/des/des/vote";
+	}
+
+	rpc Election(QueryGetElectionRequest) returns (QueryGetElectionResponse) {
+		option (google.api.http).get = "/nescampos/des/des/election/{id}";
+	}
+	rpc ElectionAll(QueryAllElectionRequest) returns (QueryAllElectionResponse) {
+		option (google.api.http).get = "/nescampos/des/des/election";
+	}
+
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetVoteRequest {
+	uint64 id = 1;
+}
+
+message QueryGetVoteResponse {
+	Vote Vote = 1;
+}
+
+message QueryAllVoteRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllVoteResponse {
+	repeated Vote Vote = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetElectionRequest {
+	uint64 id = 1;
+}
+
+message QueryGetElectionResponse {
+	Election Election = 1;
+}
+
+message QueryAllElectionRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllElectionResponse {
+	repeated Election Election = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

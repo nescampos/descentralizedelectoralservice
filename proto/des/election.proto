@@ -1,0 +1,13 @@
+syntax = "proto3";
+package nescampos.des.des;
+
+option go_package = "github.com/nescampos/des/x/des/types";
+
+import "gogoproto/gogo.proto";
+
+message Election {
+  string creator = 1;
+  uint64 id = 2;
+  string title = 3; 
+  repeated string candidates = 4; 
+}
