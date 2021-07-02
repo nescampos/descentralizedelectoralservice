@@ -13,5 +13,4 @@ Here is a demo: https://www.youtube.com/watch?v=uIy4_CSrBN8
 To start the app:
 ```console
 foo@bar:~$ starport serve
-foo
 ```
